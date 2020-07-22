@@ -19,3 +19,7 @@
   margin-right: 0;
   background-color: #f7f7f7;
 }
+
+.read {
+  border-color: transparent transparent transparent gray;
+}

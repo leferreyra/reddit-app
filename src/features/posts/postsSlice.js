@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit';
 import { getTopPosts } from 'api/RedditApi';
 
 export const fetchTopPosts = createAsyncThunk(
@@ -26,5 +26,11 @@ export const postsSlice = createSlice({
     }
   }
 });
+
+export const postByIdSelector =  createSelector(
+  state => state.posts.items,
+  (_, postId) => postId,
+  (items, postId) => items[postId]
+)
 
 export default postsSlice.reducer;

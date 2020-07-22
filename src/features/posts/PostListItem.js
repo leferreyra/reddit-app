@@ -1,16 +1,11 @@
 import React, { useMemo } from 'react';
 import cx from 'classnames';
-import { createSelector } from '@reduxjs/toolkit';
 import { useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
+import { postByIdSelector } from 'features/posts/postsSlice';
 import styles from './PostListItem.module.css';
 
-const makePostByIdSelector = () =>
-  createSelector(
-    state => state.posts.items,
-    (_, postId) => postId,
-    (items, postId) => items[postId]
-  )
+const makePostByIdSelector = () => postByIdSelector;
 
 export default function PostListItem({ postId }) {
 

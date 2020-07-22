@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PostList from 'features/posts/PostList'
+import PostDetail from 'features/posts/PostDetail'
 import { fetchTopPosts } from 'features/posts/postsSlice';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -23,7 +24,7 @@ function App() {
                 <PostList />
               </div>
               <div className={styles.detail}>
-                <h1>Details</h1>
+                <PostDetail />
               </div>
             </Route>
           </Switch>

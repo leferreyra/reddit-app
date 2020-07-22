@@ -1,8 +1,16 @@
 
 .post {
   border-width: 1px 1px 1px 5px;
-  border-color: #e8e8e8;
+  border-color: #e8e8e8 #e8e8e8 #e8e8e8 #0099ff;
   border-style: solid;
   padding: 10px;
   background: white;
+  display: block;
+  text-decoration: none;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+}
+
+.selected {
+  transform: translateX(10px);
 }

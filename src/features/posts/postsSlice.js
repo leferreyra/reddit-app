@@ -12,16 +12,16 @@ export const fetchTopPosts = createAsyncThunk(
 export const postsSlice = createSlice({
   name: 'posts',
   initialState: {
-    posts: {},
-    top: []
+    items: {},
+    list: []
   },
   reducers: {},
   extraReducers: {
     [fetchTopPosts.fulfilled]: (state, action) => {
       const { payload } = action;
       payload.data.children.forEach(post => {
-        state.posts[post.data.id] = post.data;
-        state.top.push(post.data.id);
+        state.items[post.data.id] = post.data;
+        state.list.push(post.data.id);
       })
     }
   }

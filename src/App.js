@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PostList from 'features/posts/PostList'
 import { fetchTopPosts } from 'features/posts/postsSlice';
 import { useDispatch } from 'react-redux';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styles from './App.module.css';
 
 function App() {
@@ -13,14 +14,22 @@ function App() {
   }, [dispatch])
 
   return (
-    <div className={styles.container}>
-      <div className={styles.posts}>
-        <div className={styles.list}>
-          <PostList />
+    <Router>
+      <div className={styles.container}>
+        <div className={styles.posts}>
+          <Switch>
+            <Route path="/:selectedPostId?">
+              <div className={styles.list}>
+                <PostList />
+              </div>
+              <div className={styles.detail}>
+                <h1>Details</h1>
+              </div>
+            </Route>
+          </Switch>
         </div>
-        <div className={styles.detail}>detail</div>
       </div>
-    </div>
+    </Router>
   );
 }
 

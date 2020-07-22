@@ -21,3 +21,21 @@
   flex: 1 1 auto;
   padding: 10px;
 }
+
+@media (max-width: 700px) {
+  .list {
+    flex: 1 1 auto;
+  }
+
+  .detail {
+    display: none;
+  }
+
+  .selected .list {
+    display: none;
+  }
+
+  .selected .detail {
+    display: block;
+  }
+}

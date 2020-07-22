@@ -4,8 +4,8 @@ import { getTopPosts } from 'api/RedditApi';
 export const fetchTopPosts = createAsyncThunk(
   'posts/fetchTopPosts',
   async thunkApi => {
-    const response = await getTopPosts();
-    return response;
+    const posts = await getTopPosts();
+    return posts;
   }
 )
 
@@ -13,12 +13,16 @@ export const postsSlice = createSlice({
   name: 'posts',
   initialState: {
     posts: {},
-    topList: []
+    top: []
   },
   reducers: {},
   extraReducers: {
     [fetchTopPosts.fulfilled]: (state, action) => {
-      state.topList.push(action.payload);
+      const { payload } = action;
+      payload.data.children.forEach(post => {
+        state.posts[post.data.id] = post.data;
+        state.top.push(post.data.id);
+      })
     }
   }
 });

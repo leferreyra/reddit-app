@@ -1,7 +1,8 @@
 
 .details {
+  border-radius: 5px;
+  background: white;
   height: 100%;
   padding: 10px;
-  border: 1px solid #CCCCCC;
   box-sizing: border-box;
 }

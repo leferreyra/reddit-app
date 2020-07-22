@@ -18,10 +18,23 @@ export const postsSlice = createSlice({
   },
   reducers: {
     select: (state, action) => {
-      state.itemsState[action.payload].read = true;
+      const itemState = state.itemsState[action.payload];
+      if (itemState) {
+        itemState.read = true;
+      } else {
+        state.itemsState[action.payload] = { read: true };
+      }
     },
     dismiss: (state, action) => {
-      state.itemsState[action.payload].dismissed = true;
+      const itemState = state.itemsState[action.payload];
+      if (itemState) {
+        itemState.dismissed = true;
+      } else {
+        state.itemsState[action.payload] = { dismissed: true };
+      }
+    },
+    restoreItemsState: (state, action) => {
+      state.itemsState = action.payload;
     }
   },
   extraReducers: {
@@ -30,14 +43,13 @@ export const postsSlice = createSlice({
       payload.data.children.forEach(post => {
         const { data: { id } } = post;
         state.items[id] = post.data;
-        state.itemsState[id] = { read: false, dismissed: false };
         state.list.push(id);
       })
     }
   }
 });
 
-export const { select, dismiss } = postsSlice.actions;
+export const { select, dismiss, restoreItemsState } = postsSlice.actions;
 
 export const postByIdSelector =  createSelector(
   state => state.posts.items,
@@ -48,7 +60,7 @@ export const postByIdSelector =  createSelector(
 export const postReadByIdSelector =  createSelector(
   state => state.posts.itemsState,
   (_, postId) => postId,
-  (states, postId) => states[postId].read
+  (states, postId) => states[postId] ? states[postId].read : false
 )
 
 export default postsSlice.reducer;

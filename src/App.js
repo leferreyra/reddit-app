@@ -4,7 +4,7 @@ import PostDetail from 'features/posts/PostDetail'
 import cx from 'classnames';
 import { fetchTopPosts } from 'features/posts/postsSlice';
 import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Link} from 'react-router-dom';
 import styles from './App.module.css';
 
 function App() {
@@ -28,6 +28,7 @@ function App() {
             <PostList />
           </div>
           <div className={styles.detail}>
+            <Link to="/" className={styles.back}>← Back</Link>
             <PostDetail />
           </div>
         </div>

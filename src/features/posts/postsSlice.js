@@ -33,6 +33,16 @@ export const postsSlice = createSlice({
         state.itemsState[action.payload] = { dismissed: true };
       }
     },
+    dismissAll: (state, action) => {
+      state.list.forEach(postId => {
+        const postState = state.itemsState[postId];
+        if (postState) {
+          postState.dismissed = true;
+        } else {
+          state.itemsState[postId] = { dismissed: true };
+        }
+      })
+    },
     restoreItemsState: (state, action) => {
       state.itemsState = action.payload;
     }
@@ -49,7 +59,7 @@ export const postsSlice = createSlice({
   }
 });
 
-export const { select, dismiss, restoreItemsState } = postsSlice.actions;
+export const { select, dismiss, dismissAll, restoreItemsState } = postsSlice.actions;
 
 export const postByIdSelector =  createSelector(
   state => state.posts.items,

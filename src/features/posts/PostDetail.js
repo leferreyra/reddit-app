@@ -28,7 +28,12 @@ export default function PostDetail() {
 
   return (
     <div className={styles.details}>
-      {post.title}
+      <h1>
+        {post.title}
+      </h1>
+      <p>{post.author}</p>
+      <p>{post.created}</p>
+      <p>{post.num_comments}</p>
     </div>
   );
 }

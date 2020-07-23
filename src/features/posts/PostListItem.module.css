@@ -5,9 +5,10 @@
   border-width: 1px 1px 1px 2px;
   border-color: transparent transparent transparent #0099ff;
   border-style: solid;
-  padding: 10px;
+  padding: 10px 12px;
   background: white;
-  display: block;
+  display: flex;
+  flex-direction: column;
   text-decoration: none;
   transition: all 0.1s ease-in-out;
   cursor: pointer;
@@ -26,15 +27,45 @@
   border-color: transparent transparent transparent #d6d6d6;
 }
 
+.footer,
+.header {
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: space-between;
+  margin: 0;
+  font-size: 14px;
+  color: gray;
+  fill: gray;
+}
+
+.body {
+  flex: 1 1 auto;
+}
+
+.title {
+  font-size: 18px;
+  margin: 5px 0 0 0;
+}
+
+.comment {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.comment svg {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+}
+
 .dismissButton {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  right: 5px;
-  bottom: 5px;
   border: 0;
-  padding: 2px;
+  padding: 0 4px;
   border-radius: 5px;
   fill: gray;
   outline: 0;

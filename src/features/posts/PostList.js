@@ -1,11 +1,12 @@
 import React from 'react';
 import PostListItem from 'features/posts/PostListItem';
 import { useSelector } from 'react-redux';
+import { postListSelector } from 'features/posts/postsSlice';
 import styles from './PostList.module.css';
 
 export default function PostList() {
 
-  const posts = useSelector(state => state.posts.list);
+  const posts = useSelector(postListSelector);
 
   return (
     <div className={styles.list}>

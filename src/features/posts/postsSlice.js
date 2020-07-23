@@ -63,4 +63,12 @@ export const postReadByIdSelector =  createSelector(
   (states, postId) => states[postId] ? states[postId].read : false
 )
 
+export const postListSelector = createSelector(
+  state => state.posts.list,
+  state => state.posts.itemsState,
+  (list, itemsStates) => {
+    return list.filter(postId => !itemsStates[postId] || !itemsStates[postId].dismissed);
+  }
+)
+
 export default postsSlice.reducer;

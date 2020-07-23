@@ -4,3 +4,13 @@
   overflow-y: auto;
   margin-bottom: 10px;
 }
+
+.exit {
+  opacity: 1;
+}
+
+.exitActive {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 0.3s ease-in-out;
+}

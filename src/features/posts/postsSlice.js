@@ -1,10 +1,13 @@
+import last from 'lodash.last';
 import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit';
 import { getTopPosts } from 'api/RedditApi';
 
 export const fetchTopPosts = createAsyncThunk(
   'posts/fetchTopPosts',
-  async thunkApi => {
-    const posts = await getTopPosts();
+  async (_, { getState }) => {
+    const { list } = getState().posts;
+    const lastItemId = list.length ? last(list) : undefined;
+    const posts = await getTopPosts(lastItemId);
     return posts;
   }
 )
@@ -12,6 +15,7 @@ export const fetchTopPosts = createAsyncThunk(
 export const postsSlice = createSlice({
   name: 'posts',
   initialState: {
+    loading: false,
     items: {},
     itemsState: {},
     list: []
@@ -48,8 +52,12 @@ export const postsSlice = createSlice({
     }
   },
   extraReducers: {
+    [fetchTopPosts.pending]: (state, action) => {
+      state.loading = true;
+    },
     [fetchTopPosts.fulfilled]: (state, action) => {
       const { payload } = action;
+      state.loading = false;
       payload.data.children.forEach(post => {
         const { data: { id } } = post;
         state.items[id] = post.data;

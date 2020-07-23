@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PostList from 'features/posts/PostList'
 import PostDetail from 'features/posts/PostDetail'
 import cx from 'classnames';
-import { fetchTopPosts, dismissAll } from 'features/posts/postsSlice';
+import { dismissAll } from 'features/posts/postsSlice';
 import { useDispatch } from 'react-redux';
 import { useParams, Link} from 'react-router-dom';
 import { ReactComponent as CloseIcon } from 'images/close.svg';
@@ -11,10 +11,6 @@ import styles from './App.module.css';
 function App() {
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchTopPosts());
-  }, [dispatch])
 
   const { selectedPostId } = useParams();
 

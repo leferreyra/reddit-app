@@ -14,6 +14,14 @@ To run the application locally just check out the repository and run
 yarn && yarn start
 ```
 
+## Building
+
+To build the project for production, run
+
+```
+yarn build
+```
+
 ## Deploy
 
 The production application is hosted using Firebase hosting. To deploy run

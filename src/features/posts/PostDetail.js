@@ -19,7 +19,7 @@ export default function PostDetail() {
     }
   }, [dispatch, post, selectedPostId])
 
-  if (loading) {
+  if (loading && selectedPostId && !post) {
     return (
       <p className={styles.message}>Loading...</p>
     )

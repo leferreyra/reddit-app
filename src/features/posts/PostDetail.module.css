@@ -3,5 +3,40 @@
   border-radius: 5px;
   height: 100%;
   padding: 10px;
+  overflow: auto;
   box-sizing: border-box;
+}
+
+.details h1 {
+  margin: 0;
+}
+
+.authorAndTime {
+  color: gray;
+  margin: 5px 0 0 0;
+}
+
+.image {
+  margin-top: 15px;
+  max-width: 100%;
+}
+
+.comment {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.comment svg {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+}
+
+.message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }

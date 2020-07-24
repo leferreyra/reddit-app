@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { postListSelector, fetchTopPosts } from 'features/posts/postsSlice';
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import { useDispatch } from 'react-redux';
+import { ReactComponent as Skeleton } from 'images/skeleton.svg';
 import styles from './PostList.module.css';
 
 const SCROLL_OFFSET = 2000;
@@ -51,6 +52,15 @@ export default function PostList() {
             </div>
           </CSSTransition>
         ))}
+        <div className={styles.post}>
+          <Skeleton className={styles.loading} />
+        </div>
+        <div className={styles.post}>
+          <Skeleton className={styles.loading} />
+        </div>
+        <div className={styles.post}>
+          <Skeleton className={styles.loading} />
+        </div>
       </TransitionGroup>
     </div>
   );

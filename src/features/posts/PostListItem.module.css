@@ -47,6 +47,12 @@
   margin: 5px 0 0 0;
 }
 
+.thumbnail {
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
 .comment {
   display: flex;
   align-items: center;

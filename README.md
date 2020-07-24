@@ -1,68 +1,79 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
-## Available Scripts
+Reddit Inbox
+============
 
-In the project directory, you can run:
+A simple application for browsing the top posts list of Reddit's homepage.
 
-### `yarn start`
+*Check out the running application on https://reddit-inbox.web.app*
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Running
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+To run the application locally just check out the repository and run
 
-### `yarn test`
+```
+yarn && yarn start
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Deploy
 
-### `yarn build`
+The production application is hosted using Firebase hosting. To deploy run
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+firebase deploy
+```
+*You must have firebase-tools package installed*.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Desicions
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Testing
 
-### `yarn eject`
+Right off the bat, given the project's scope and available time, plus the fact that testing is not mentioned in the assignment, I chose to leave all sorts of automated testing out of scope. By ensuring feature quality manually, we free some more time for feature development.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Bootstraping
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The project was bootstrapped using the tool `create-react-app`. Specifically the `redux` template.
+This template uses some very sensible environment setup and defaults. And I chose to go mostly with the template's because it would be faster. Environment settups may take lots of time to have perfect.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Tools and libraries
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### UI
 
-## Learn More
+For the UI, I used React.js, of course. I used the rather new Hooks syntax, just for preference.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### State management
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+For the app's state management I used redux (as it was specified in the assignment, if it was up to me I wouldn't have included it since its a very small project to justify it).
+I also used the Redux Toolkit which is a set of utilities and packages that the Redux team has put together that covers the most basic Redux usecases. I haven't used it before, but its pretty cool.
 
-### Code Splitting
+#### Styles
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+The bootstrapped project had plain CSS modules configured. So I just used plain CSS modules as it is.
 
-### Analyzing the Bundle Size
+#### react-time-ago
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+I used a couple of third party components, to speed up development. One of them is `react-time-ago` which is a component that turns a date object into a human friendly relative time string. It has different locales to choose from, very configurable and flexible.
 
-### Making a Progressive Web App
+#### axios
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+For making requests, I chose `axios`. Mostly because I'm very familiar with it.
 
-### Advanced Configuration
+#### lodash
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+I included a lodash function. The `last` function, picks the last element of an array. Because the way to do it in plain javascript is so ugly.
 
-### Deployment
+#### use-debounce
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+I included a package that provides a react hook to debounce stuff. Never used it before, but its simple and it works.
 
-### `yarn build` fails to minify
+#### react-router-dom
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Of course, the default package for routing in reactland. Not to much to say about that. It's my go to routing for react.
+
+#### Infinite Loading
+
+I tried different packages to implement the infinite scrolling of the post list, but none really worked as I wanted, or they lacked configuration options. So I just coded it from scratch.
+
+#### Animations
+
+I used the `react-transition-group` to manage the component's transitions. Its the default solution for react animations.
+

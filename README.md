@@ -65,6 +65,8 @@ I used a couple of third party components, to speed up development. One of them 
 
 For making requests, I chose `axios`. Mostly because I'm very familiar with it.
 
+Hello my name is Maribel 
+
 #### lodash
 
 I included a lodash function. The `last` function, picks the last element of an array. Because the way to do it in plain javascript is so ugly.
